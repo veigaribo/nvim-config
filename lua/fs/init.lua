@@ -1,6 +1,6 @@
 local fs = {}
 
-local tfs = require 'telescope_fs'
+local tfs = require 'fs.telescope'
 
 local function create_parents(path)
 	local dirname = vim.fs.dirname(path)

@@ -96,14 +96,19 @@ return {
 			end,
 		})
 
-		local capabilities = vim.lsp.protocol.make_client_capabilities()
+		local default_capabilities = vim.lsp.protocol.make_client_capabilities()
 
-		capabilities = vim.tbl_deep_extend('force',
-			capabilities,
+		capabilities_with_completion = vim.tbl_deep_extend('force',
+			default_capabilities,
 			require('cmp_nvim_lsp').default_capabilities()
 		)
 
 		local setup = function(server_name, options)
+			options.capabilities = vim.tbl_deep_extend('force',
+				options.capabilities or {},
+				capabilities_with_completion
+			)
+
 			-- Do NOT autostart
 			require('lspconfig')[server_name].setup(
 				vim.tbl_extend('force', { autostart = false }, options)
