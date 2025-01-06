@@ -13,4 +13,8 @@ lang.lsp = {
 	}
 }
 
+lang.formatters = {
+	rust = { "rustfmt" }
+}
+
 return lang

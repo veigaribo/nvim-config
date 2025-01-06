@@ -26,4 +26,8 @@ lang.lsp = {
 	}
 }
 
+lang.formatters = {
+	lua = { "lua-format" }
+}
+
 return lang
