@@ -23,11 +23,11 @@ lang.lsp = {
 				format = { enable = false },
 			},
 		},
-	}
+	},
 }
 
 lang.formatters = {
-	lua = { "lua-format" }
+	lua = { 'stylua' },
 }
 
 return lang

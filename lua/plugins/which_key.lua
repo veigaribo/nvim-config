@@ -37,15 +37,18 @@ return { -- Show pending keybinds.
 		},
 
 		spec = {
+			-- stylua: ignore start
 			{ '<leader>b',  group = 'Buffer' },
 			{ '<leader>c',  group = 'Code',   mode = { 'n', 'x' } },
 			{ '<leader>cs', group = 'Symbols' },
 			{ '<leader>f',  group = 'File' },
+			{ '<leader>o',  group = 'Open' },
 			{ '<leader>p',  group = 'Project' },
 			{ '<leader>s',  group = 'Search' },
+			{ '<leader>t',  group = 'Tabs' },
 			{ '<leader>w',  group = 'Window' },
 			{ '<leader>x',  group = 'Errors' },
+			-- stylua: ignore end
 		},
 	},
 }
-

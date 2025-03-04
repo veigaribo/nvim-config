@@ -20,7 +20,7 @@ return { -- Autoformat
 		formatters_by_ft = vim.tbl_extend(
 			'error',
 			require('plugins.langs').formatters,
-			{ ["_"] = { "trim_whitespace" } }
+			{ ['_'] = { 'trim_whitespace' } }
 		),
 	},
 }

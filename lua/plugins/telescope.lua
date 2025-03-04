@@ -12,7 +12,10 @@ return { -- Fuzzy finder
 			end,
 		},
 		{ 'nvim-telescope/telescope-ui-select.nvim' },
-		{ 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+		{
+			'nvim-tree/nvim-web-devicons',
+			enabled = vim.g.have_nerd_font,
+		},
 	},
 	config = function()
 		require('telescope').setup({
@@ -27,29 +30,73 @@ return { -- Fuzzy finder
 		pcall(require('telescope').load_extension, 'ui-select')
 
 		local builtin = require('telescope.builtin')
-		vim.keymap.set('n', '<leader>sh', builtin.help_tags,
-			{ desc = 'Search help' })
-		vim.keymap.set('n', '<leader>sk', builtin.keymaps,
-			{ desc = 'Search keymaps' })
-		vim.keymap.set('n', '<leader>sf', builtin.find_files,
-			{ desc = 'Search files' })
-		vim.keymap.set('n', '<leader>sw', builtin.grep_string,
-			{ desc = 'Search current word' })
-		vim.keymap.set('n', '<leader>sg', builtin.live_grep,
-			{ desc = 'Search by grep' })
-		vim.keymap.set('n', '<leader>sr', builtin.resume,
-			{ desc = 'Search resume' })
-		vim.keymap.set('n', '<leader>s.', builtin.oldfiles,
-			{ desc = 'Search recent files' })
-		vim.keymap.set('n', '<leader>sb', builtin.buffers,
-			{ desc = 'List buffers' })
+		vim.keymap.set(
+			'n',
+			'<leader>sh',
+			builtin.help_tags,
+			{ desc = 'Search help' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>sk',
+			builtin.keymaps,
+			{ desc = 'Search keymaps' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>sf',
+			builtin.find_files,
+			{ desc = 'Search files' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>sw',
+			builtin.grep_string,
+			{ desc = 'Search current word' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>sg',
+			builtin.live_grep,
+			{ desc = 'Search by grep' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>sr',
+			builtin.resume,
+			{ desc = 'Search resume' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>s.',
+			builtin.oldfiles,
+			{ desc = 'Search recent files' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader>sb',
+			builtin.buffers,
+			{ desc = 'List buffers' }
+		)
 
-		vim.keymap.set('n', '<leader>pf', builtin.git_files,
-			{ desc = 'Search file in project' })
-		vim.keymap.set('n', '<leader><leader>', builtin.git_files,
-			{ desc = 'Search file in project' })
-		vim.keymap.set('n', '<M-x>', builtin.commands,
-			{ desc = 'List commands' })
+		vim.keymap.set(
+			'n',
+			'<leader>pf',
+			builtin.git_files,
+			{ desc = 'Search file in project' }
+		)
+		vim.keymap.set(
+			'n',
+			'<leader><leader>',
+			builtin.git_files,
+			{ desc = 'Search file in project' }
+		)
+		vim.keymap.set(
+			'n',
+			'<M-x>',
+			builtin.commands,
+			{ desc = 'List commands' }
+		)
 
 		vim.keymap.set(
 			'n',
@@ -59,4 +106,3 @@ return { -- Fuzzy finder
 		)
 	end,
 }
-

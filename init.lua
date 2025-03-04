@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = false
 
 vim.opt.tabstop = 2
+vim.opt.shiftwidth = 0
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
@@ -16,7 +17,7 @@ vim.opt.wrap = false
 vim.opt.breakindent = true
 vim.opt.undofile = true
 vim.opt.ignorecase = true
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = 'no'
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.splitright = true
@@ -33,6 +34,10 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
+vim.cmd('colorscheme firewatch')
+vim.cmd('highlight Normal guibg=none')
+
+-- stylua: ignore start
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>',
 	{ desc = 'Exit terminal mode' })
@@ -62,6 +67,15 @@ vim.keymap.set('n', '<leader>ws', '<C-w><C-s>',
 vim.keymap.set('n', '<leader>wd', '<C-w>q',
 	{ desc = 'Delete window' })
 
+vim.keymap.set('n', '<leader>th', '<cmd>tabprevious<CR>',
+	{ desc = 'Move to previous tab' })
+vim.keymap.set('n', '<leader>tl', '<cmd>tabnext<CR>',
+	{ desc = 'Move to next tab' })
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<CR>',
+	{ desc = 'Create tab' })
+vim.keymap.set('n', '<leader>td', '<cmd>tabclose<CR>',
+	{ desc = 'Close current tab' })
+
 vim.keymap.set('n', '<leader>b[', '<cmd>bprevious<CR>',
 	{ desc = 'Previous buffer' })
 vim.keymap.set('n', '<leader>b]', '<cmd>bNext<CR>',
@@ -71,15 +85,13 @@ vim.keymap.set('n', '<leader>bN', '<cmd>enew<CR>',
 vim.keymap.set('n', '<leader>bd', '<cmd>Bdelete<CR>',
 	{ desc = 'Next buffer' })
 
-local fs = require('fs')
-vim.keymap.set('n', '<leader>fD', fs.delete_file,
-	{ desc = 'Delete file' })
-vim.keymap.set('n', '<leader>fS', fs.save_file,
-	{ desc = 'Save to file' })
-vim.keymap.set('n', '<leader>fR', fs.move_file,
-	{ desc = 'Move file' })
-vim.keymap.set('n', '<leader>ff', fs.find_file,
-	{ desc = 'Find file' })
+vim.keymap.set('n', '<leader>oe', '<cmd>Sex<CR>', { desc = 'Sex' })
+
+vim.keymap.set('n', '<leader>cn', '<cmd>LspStart<CR>',
+	{ desc = 'Start LSP' })
+vim.keymap.set('n', '<leader>cd', '<cmd>LspStop<CR>',
+	{ desc = 'Stop LSP' })
+-- stylua: ignore end
 
 -- `:help lazy.nvim.txt` / https://github.com/folke/lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -99,18 +111,21 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-	require 'plugins.which_key',
-	require 'plugins.telescope',
-	require 'plugins.treesitter',
-	require 'plugins.lsp',
-	require 'plugins.formatting',
-	require 'plugins.completion',
-	require 'plugins.trouble',
-	require 'plugins.flair',
-	require 'plugins.util',
+require('plugins.langs').global_setup()
 
-	require 'plugins.langs'.plugin,
+require('lazy').setup({
+	require('plugins.which_key'),
+	require('plugins.telescope'),
+	require('plugins.nerdtree'),
+	require('plugins.treesitter'),
+	require('plugins.formatting'),
+	require('plugins.completion'),
+	require('plugins.trouble'),
+	require('plugins.flair'),
+	require('plugins.util'),
+
+	require('plugins.lsp').plugin,
+	require('plugins.langs').plugin,
 }, {
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {

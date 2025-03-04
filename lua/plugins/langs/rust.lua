@@ -10,11 +10,11 @@ lang.lsp = {
 				cargo = { features = 'all' },
 			},
 		},
-	}
+	},
 }
 
 lang.formatters = {
-	rust = { "rustfmt" }
+	rust = { 'rustfmt' },
 }
 
 return lang
