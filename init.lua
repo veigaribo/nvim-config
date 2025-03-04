@@ -36,6 +36,7 @@ vim.opt.scrolloff = 10
 
 vim.cmd('colorscheme firewatch')
 vim.cmd('highlight Normal guibg=none')
+vim.cmd('highlight Normal ctermbg=none')
 
 -- stylua: ignore start
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
