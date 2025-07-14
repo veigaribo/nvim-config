@@ -53,6 +53,23 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>',
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>',
 	{ desc = 'Move focus to the window above' })
 
+vim.keymap.set('n', '<leader>fp', '1<C-g>',
+	{ desc = 'Print current file name' })
+
+vim.keymap.set('n', '<leader>fd',
+	function()
+		print(vim.fn.getcwd())
+	end,
+	{ desc = 'Print current directory' }
+)
+
+vim.keymap.set('n', '<leader>fy',
+	function()
+		vim.fn.setreg('+', vim.api.nvim_buf_get_name(0))
+	end,
+	{ desc = 'Yank current file name' }
+)
+
 vim.keymap.set('n', '<leader>wh', '<C-w><C-h>',
 	{ desc = 'Move focus to the window on the left' })
 vim.keymap.set('n', '<leader>wl', '<C-w><C-l>',
@@ -117,6 +134,7 @@ require('plugins.langs').global_setup()
 require('lazy').setup({
 	require('plugins.which_key'),
 	require('plugins.telescope'),
+	require('plugins.oil'),
 	require('plugins.nerdtree'),
 	require('plugins.treesitter'),
 	require('plugins.formatting'),

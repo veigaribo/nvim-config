@@ -1,9 +1,11 @@
 local langs = {}
 
 local lang_modules = {
+	require('plugins.langs.c'),
 	require('plugins.langs.css'),
 	require('plugins.langs.lua'),
 	require('plugins.langs.go'),
+	require('plugins.langs.python'),
 	require('plugins.langs.rust'),
 	require('plugins.langs.scala'),
 	require('plugins.langs.typescript'),

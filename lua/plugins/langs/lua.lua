@@ -19,8 +19,14 @@ lang.lsp = {
 	options = {
 		settings = {
 			Lua = {
+				diagnostics = { disable = { 'lowercase-global' } },
 				completion = { callSnippet = 'Replace' },
 				format = { enable = false },
+				workspace = {
+					userThirdParty = {
+						vim.fn.expand('~/.local/share/luals-addons/'),
+					},
+				},
 			},
 		},
 	},

@@ -45,7 +45,7 @@ return { -- Fuzzy finder
 		vim.keymap.set(
 			'n',
 			'<leader>sf',
-			builtin.find_files,
+			function() builtin.find_files({ hidden = true }) end,
 			{ desc = 'Search files' }
 		)
 		vim.keymap.set(
