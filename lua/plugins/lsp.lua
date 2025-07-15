@@ -124,8 +124,13 @@ lsp.plugin = {
 				capabilities_with_completion
 			)
 
+			-- require('lspconfig')[server_name].setup(
+			-- 	vim.tbl_extend('force', { autostart = false }, options)
+			-- )
+
 			-- Do NOT autostart
-			require('lspconfig')[server_name].setup(
+			vim.lsp.config(
+				server_name,
 				vim.tbl_extend('force', { autostart = false }, options)
 			)
 		end
