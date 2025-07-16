@@ -143,6 +143,8 @@ require('lazy').setup({
 	require('plugins.flair'),
 	require('plugins.util'),
 
+	require('plugins.mason'),
+
 	require('plugins.lsp').plugin,
 	require('plugins.langs').plugin,
 }, {
