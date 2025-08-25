@@ -2,8 +2,7 @@ local lsp = {}
 
 function lsp.setup_keymaps(client, bufnr)
 	local telescope = require('telescope.builtin')
-
-	-- stylua: ignore start
+-- stylua: ignore start
 	local bind = function(mode, keys, func, desc)
 		vim.keymap.set(mode, keys, func,
 			{ buffer = bufnr, desc = 'LSP: ' .. desc })

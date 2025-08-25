@@ -94,10 +94,6 @@ vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<CR>',
 vim.keymap.set('n', '<leader>td', '<cmd>tabclose<CR>',
 	{ desc = 'Close current tab' })
 
-vim.keymap.set('n', '<leader>b[', '<cmd>bprevious<CR>',
-	{ desc = 'Previous buffer' })
-vim.keymap.set('n', '<leader>b]', '<cmd>bNext<CR>',
-	{ desc = 'Next buffer' })
 vim.keymap.set('n', '<leader>bN', '<cmd>enew<CR>',
 	{ desc = 'Create buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>Bdelete<CR>',
@@ -133,6 +129,7 @@ require('plugins.langs').global_setup()
 
 require('lazy').setup({
 	require('plugins.which_key'),
+	require('plugins.history'),
 	require('plugins.telescope'),
 	require('plugins.oil'),
 	require('plugins.nerdtree'),
