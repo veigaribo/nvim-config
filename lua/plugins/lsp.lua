@@ -35,7 +35,7 @@ function lsp.setup_keymaps(client, bufnr)
 
 	if
 		client
-		and client.supports_method(
+		and client:supports_method(
 			vim.lsp.protocol.Methods.textDocument_documentHighlight
 		)
 	then
@@ -72,7 +72,7 @@ function lsp.setup_keymaps(client, bufnr)
 
 	if
 		client
-		and client.supports_method(
+		and client:supports_method(
 			vim.lsp.protocol.Methods.textDocument_inlayHint
 		)
 	then
