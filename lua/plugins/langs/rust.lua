@@ -14,7 +14,7 @@ lang.lsp = {
 }
 
 lang.formatters = {
-	rust = { 'rustfmt' },
+	rust = { 'rustfmt', lsp_format = 'prefer' },
 }
 
 return lang
