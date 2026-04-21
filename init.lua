@@ -8,6 +8,7 @@ vim.opt.shiftwidth = 0
 vim.opt.number = true
 vim.opt.mouse = 'a'
 vim.opt.showmode = false
+vim.opt.expandtab = false
 
 vim.schedule(function()
 	vim.opt.clipboard = 'unnamedplus'
@@ -101,9 +102,24 @@ vim.keymap.set('n', '<leader>bd', '<cmd>Bdelete<CR>',
 
 vim.keymap.set('n', '<leader>oe', '<cmd>Sex<CR>', { desc = 'Sex' })
 
-vim.keymap.set('n', '<leader>cn', '<cmd>LspStart<CR>',
+-- The old LspStart from lspconfig
+function lsp_start()
+	local servers = {}
+
+	local filetype = vim.bo.filetype
+	for name, _ in pairs(vim.lsp.config._configs) do
+		local filetypes = vim.lsp.config[name].filetypes
+		if filetypes and vim.tbl_contains(filetypes, filetype) then
+			table.insert(servers, name)
+		end
+	end
+
+	vim.lsp.enable(servers)
+end
+
+vim.keymap.set('n', '<leader>cn', lsp_start,
 	{ desc = 'Start LSP' })
-vim.keymap.set('n', '<leader>cd', '<cmd>LspStop<CR>',
+vim.keymap.set('n', '<leader>cd', '<cmd>:lsp stop<CR>',
 	{ desc = 'Stop LSP' })
 -- stylua: ignore end
 
